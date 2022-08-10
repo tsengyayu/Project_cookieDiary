@@ -1,38 +1,47 @@
 <template>
-  <div>
+  <div id="root-diary">
     <!-- <div>
       <img id="testImg" src="https://firebasestorage.googleapis.com/v0/b/cookielife-de262.appspot.com/o/diary%2FSiJd74BZ84vK1yDF9Te1%2FcontentImage?alt=media&token=826e35f3-aa49-411b-b606-e03c1ecfc819" />
     </div> -->
     <div class="left" v-show="selectedDiaryId">
-      <span class="leftMargin" v-for="doc in comments" :key="doc.id">
-        <p style="color: blue">姓名：{{ doc.data().name }}</p>
-        <p>內容：{{ doc.data().comment }}</p>
+    <div style="background-color: blanchedalmond;width: auto;border-radius: 25px; margin-left: 10px;">
+    <h1 class="leftMargin" style="padding-top: 10px">留言區</h1>
+      <span v-for="doc in comments" :key="doc.id">
+        <p class="leftMargin">
+        {{ doc.data().name }}：{{ doc.data().comment }}
+        </p>
+        <!-- <p class="leftMargin">內容：{{ doc.data().comment }}</p> -->
         <p></p>
         <p></p>
       </span>
-      <p class="leftMargin">
+      <p class="leftMargin" style="padding-bottom: 20px">
         留言：<input v-model="message" />
-        <button @click="createMessage()">送出</button>
+        <button class="Button" @click="createMessage()">送出</button>
       </p>
-    </div>
+      
+    </div></div>
     <div class="right">
       <span v-for="doc in diaries" :key="doc.id">
         <!-- <div v-for="(doc,index) in diaryURL" :key="index"> -->
-        <div class="textLeft">
+        <div>
           <img :src="contentImageMap[doc.id]" />
-        </div>
-        <div class="textRight">
-        <p class="fontStyle">{{ doc.data().title }}</p>
-        <!-- <p></p> -->
-        <p style="font-size:6px">{{ timeHelper.timestampToYYYY_MM_DD_mm(doc.data().createTime.seconds) }}</p>
-        <!-- <p></p> -->
-        <p class="fontStyle" >{{ doc.data().text }}</p>
-        <p
-          @click="showMessages(doc.id)"
-          style="cursor: pointer; user-select: none;padding-left:500px"
-        >
-          留言
-        </p>
+          <!-- </div> -->
+          <!-- <div class="textRight"> -->
+          <p class="fontStyle">{{ doc.data().title }}</p>
+          <!-- <p></p> -->
+          <p style="font-size: 6px">
+            {{
+              timeHelper.timestampToYYYY_MM_DD_mm(doc.data().createTime.seconds*1000)
+            }}
+          </p>
+          <!-- <p></p> -->
+          <p class="fontStyle">{{ doc.data().text }}</p>
+          <p
+            @click="showMessages(doc.id)"
+            style="cursor: pointer; user-select: none; "
+          >
+            留言
+          </p>
         </div>
         <hr />
       </span>
@@ -40,44 +49,144 @@
   </div>
 </template>
 
-<style scoped lung="scss">
+<style scoped lang="scss">
+
+#root-diary{
+  position: relative;
+  height: 100%;
+  
+}
+@media screen and (max-width: 2000px) {
 .left {
   position: absolute;
+  overflow: scroll;
+  left: 0;
+  top: 0;
   width: 60%;
   height: 100%;
-  border-right: 1px black solid;
+  /* border-right: 1px black solid; */
   padding-left: 5x;
-  font-family: Noto+Serif+TC;
+  font-family: Noto + Serif + TC;
+  /* background-color: aquamarine; */
+  /* background-color: blanchedalmond; */
 }
-.leftMargin{
-  padding-left: 5px;
+.leftMargin {
+  padding-left: 10px;
 }
 .right {
   position: absolute;
+  overflow: scroll;
+  top: 0;
   right: 0px;
   width: 40%;
   height: 100%;
   text-align: center;
-  border-left: 1px black solid;
-  font-family: Noto+Serif+TC;
-}
-.textLeft{
-  /* background-color: aqua; */
-  }
-  .textRight{
+  /* border-left: 1px black solid; */
+  font-family: Noto + Serif + TC;
   /* background-color: blueviolet; */
-  }
-.fontStyle{
-  font-family: Noto+Serif+TC;
+}
+.fontStyle {
+  font-family: Noto + Serif + TC;
   font-weight: bolder;
   font-size: 15px;
 }
-img{
+img {
   margin-top: 20px;
   width: 200px;
-  height: 300px;
+  height: 100%;
   border: 3px black solid;
   border-radius: 10px;
+}
+}
+@media screen and (max-width: 700px) {
+.left {
+  position: absolute;
+  overflow: scroll;
+  left: 0;
+  top: 0;
+  width: 60%;
+  height: 100%;
+  /* border-right: 1px black solid; */
+  padding-left: 5x;
+  // font-size: 5px;
+  font-family: Noto + Serif + TC;
+  /* background-color: aquamarine; */
+  /* background-color: blanchedalmond; */
+}
+.leftMargin {
+  padding-left: 10px;
+}
+.right {
+  position: absolute;
+  overflow: scroll;
+  top: 0;
+  right: 0px;
+  width: 40%;
+  height: 100%;
+  text-align: center;
+  /* border-left: 1px black solid; */
+  font-family: Noto + Serif + TC;
+  /* background-color: blueviolet; */
+}
+.fontStyle {
+  font-family: Noto + Serif + TC;
+  font-weight: bolder;
+  font-size: 5px;
+}
+img {
+  margin-top: 20px;
+  width: 150px;
+  height: 100%;
+  border: 2px black solid;
+  border-radius: 10px;
+}
+}
+@media screen and (max-width: 450px) {
+.left {
+  position: absolute;
+  overflow: scroll;
+  left: 0;
+  top: 0;
+  width: 60%;
+  height: 100%;
+  /* border-right: 1px black solid; */
+  padding-left: 5x;
+  font-size: 5px;
+  font-family: Noto + Serif + TC;
+  /* background-color: aquamarine; */
+  /* background-color: blanchedalmond; */
+}
+.leftMargin {
+  padding-left: 10px;
+}
+.Button{
+  margin-top: 5px;
+  margin-left: 20%;
+}
+.right {
+  position: absolute;
+  overflow: scroll;
+  top: 0;
+  right: 0px;
+  width: 40%;
+  height: 100%;
+  text-align: center;
+  /* border-left: 1px black solid; */
+  font-family: Noto + Serif + TC;
+  /* background-color: blueviolet; */
+}
+.fontStyle {
+  font-family: Noto + Serif + TC;
+  font-weight: bolder;
+  font-size: 1px;
+}
+img {
+  margin-top: 20px;
+  width: 100px;
+  height: 100%;
+  border: 2px black solid;
+  border-radius: 10px;
+}
 }
 
 </style>
@@ -96,37 +205,16 @@ const diaryURL = ref([]);
 const contentImageMap = ref({});
 const i = 0;
 
-
-
 onMounted(() => {
   firebase.getDiaries().then((v) => {
     diaries.value = v;
 
-
-    // for(var i=0; i<diaries.value.length; i++){
-    //   var element = diaries.value[i];
-    //   firebase.testDownload( diaries.value[i].id).then((v) => {
-    //     diaryURL.value = v;
-    //     console.log(diaryURL.value);
-    //   });
-    // }
-
-
-
     diaries.value.forEach((element) => {
-      firebase.testDownload(element.id).then((v) => {
-        console.log('contentImage URL:');
-        console.log(v);
+      firebase.getDiaryContentImageUrl(element.id).then((v) => {
         contentImageMap.value[element.id] = v;
-        // diaryURL.value = v;
-        // console.log(diaryURL.value);
       });
     });
   });
-
-  //    firebase.testDownload('SiJd74BZ84vK1yDF9Te1').then((v)=>{
-  // console.log(v)
-  //   });
 });
 
 async function createMessage() {

@@ -12,6 +12,7 @@ return mm +':' + sec
 function timestampToYYYY_MM_DD(timestampInSec){
    var date =  new Date(timestampInSec);
    var yyyy = date.getFullYear();
+//    console.log(yyyy);
    var mm = date.getMonth()+1;
    if(mm<10){
        mm = '0' + mm;
@@ -20,6 +21,9 @@ function timestampToYYYY_MM_DD(timestampInSec){
    if(dd<10){
     dd = '0' + dd;
    }
+   console.log(date);
+    console.log(mm);
+    console.log(dd);
    return yyyy+'-'+mm+'-'+dd;
 }
 

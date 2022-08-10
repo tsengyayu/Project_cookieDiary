@@ -7,9 +7,9 @@
                 <br>
                 <button>create</button>
             </div>
-            <div class="right">
+            <!-- <div class="right">
                 <img src="login-bgcolor.png">
-            </div>
+            </div> -->
     </div>
 </template>
 

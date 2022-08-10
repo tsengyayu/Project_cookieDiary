@@ -1,43 +1,66 @@
 <template>
   <div id="Tab-Login">
-    <div class="diamod"></div>
+    <!-- <div class="diamod"></div> -->
     <!-- contentType == 1 是登入 -->
-    <div class="login-region" v-show="contentType == 1">
-      <h1>Sign in</h1>
-      <p>userName： <input v-model="userName" /></p>
-      <p>passWord：<input v-model="password" /></p>
-      <br />
-      <button @click="login(password)">login</button>
-      <h3>
-        還沒有帳號？ 請按：<span
-          @click="changeContentType(2)"
-          style="cursor: pointer; user-select: none"
-          >創建</span
-        >
-      </h3>
-    </div>
-    <!-- contentType == 2 是註冊 -->
-    <div class="register-region" v-show="contentType == 2">
-      <h1>Create</h1>
-      <p>userName： <input v-model="userName" /></p>
 
-      <p>passWord：<input v-model="password" /></p>
-      <br />
-      <button @click="create">create</button>
-      <!-- <h3>{{message}}</h3> -->
-      <h3>
-        已有帳號，請按：
-        <span
-          @click="changeContentType(1)"
-          style="cursor: pointer; user-select: none"
-          >登入</span
+    <div class="login-region diamod" v-show="contentType == 1">
+      <!-- <div style="position:absolute; width:50px; height:50px; background-color: blue; right: 0; bottom:0;">
+
+      </div> -->
+
+      <div style="padding: 50px">
+        <h1>Sign in</h1>
+        <p>userName： <input v-model="userName" /></p>
+        <p>passWord：<input v-model="password" /></p>
+        <br />
+        <button @click="login(password)">login</button>
+        <h3>
+          還沒有帳號？ 請按：<span
+            @click="changeContentType(2)"
+            style="cursor: pointer; user-select: none"
+            >創建</span
           >
-      </h3>
+        </h3>
+        <!-- <div class="diamod"></div> -->
+      </div>
     </div>
 
-    <div class="register-region" v-show="contentType == 3">
-      <h3>您已登入</h3>
-      <button @click="logout">登出</button>
+    <!-- <div
+      style="
+        width: 50px;
+        height: 50px;
+        background-color: green;
+        display: inline-block;
+      "
+    ></div> -->
+    <!-- <span>Hello</span> -->
+
+    <!-- contentType == 2 是註冊 -->
+    <div class="register-region diamod" v-show="contentType == 2">
+      <div style="padding: 50px">
+        <h1>Create</h1>
+        <p>userName： <input v-model="userName" /></p>
+
+        <p>passWord：<input v-model="password" /></p>
+        <br />
+        <button @click="create">create</button>
+        <!-- <h3>{{message}}</h3> -->
+        <h3>
+          已有帳號，請按：
+          <span
+            @click="changeContentType(1)"
+            style="cursor: pointer; user-select: none"
+            >登入</span
+          >
+        </h3>
+      </div>
+    </div>
+
+    <div class="register-region diamod" v-show="contentType == 3">
+      <div style="padding: 50px">
+        <h3>您已登入</h3>
+        <button @click="logout">登出</button>
+      </div>
     </div>
   </div>
 </template>
@@ -57,9 +80,9 @@ const emit = defineEmits(["subTabSelected"]);
 const subselectedTabIndex = ref(0);
 
 onMounted(() => {
-  /// test code
   var lastUser = userManager.getUser();
   if (lastUser) {
+    console.log(lastUser);
     userName.value = lastUser.username;
     contentType.value = 3;
   }
@@ -71,8 +94,7 @@ function changeContentType(type) {
 }
 
 // vue3  -> provide/inject
-// vuex  -> 
-
+// vuex  ->
 
 function subTabSelected(index) {
   //菜單跳轉頁面
@@ -80,9 +102,7 @@ function subTabSelected(index) {
   emit("subTabSelected", index);
 }
 
-
-const setContentEditShow = inject('setContentEditShow');
-
+const setContentEditShow = inject("setContentEditShow");
 
 async function login(password) {
   var doc = await firebase.getUser(userName.value);
@@ -90,17 +110,17 @@ async function login(password) {
     alert("login failed");
     return;
   }
-  if(doc.data().password!=password){
+  if (doc.data().password != password) {
     alert("login failed");
     return;
   }
   // todo memory login info
- // todo change other hint example toast
- alert("login success")
+  // todo change other hint example toast
+  alert("login success");
   userManager.updateUser(doc.id);
   contentType.value = 3;
   console.log(doc.data().password);
-  setContentEditShow(doc.id == 'cookie');
+  setContentEditShow(doc.id == "cookie");
 
   // var docs = await firebase.getUsers();
 
@@ -192,24 +212,40 @@ function logout() {
   userName.value = null;
   password.value = null;
 
-   setContentEditShow(false)
+  setContentEditShow(false);
 }
 </script>
  <style lang="scss" scoped>
+#text-rotate {
+  transform: rotate(-45deg);
+}
 #Tab-Login {
+  // background-color: red;
+  // height: 100%;
+
   text-align: center;
   padding-top: 100px;
-.diamod {
-  position: absolute;
-  top: 120px;
-  left: 465px;
-  z-index: -1;
-  width: 400px;
-  height: 400px;
-  background: burlywood;
-  transform: rotate(45deg);
-  margin: 50px;
-}
+  position: relative;
+
+  .diamod {
+    position: absolute;
+    left: 50%; // calc(50% - 250px)
+    // top:  50%;
+    // transform: translate(-250px, -250px);
+    transform: translate(-50%,0);
+
+    // margin-left: 50%;
+    display: inline-block;
+    width: 500px;
+    // height: 400px;
+
+    // margin: auto;
+    background: blanchedalmond;
+    border-radius: 25px;
+    // transform: rotate(45deg);
+
+    // margin: 50px;
+  }
   //     .btn{
   //     display: flex;
   //     justify-content: start;

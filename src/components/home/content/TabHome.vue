@@ -5,7 +5,7 @@
       <h1 style="font-family: Festive">Cookie</h1>
     </div>
     <div class="bottom">
-      <div class="data bottom-bgcolor">
+      <div class="word bottom-bgcolor">
         <h2>姓名：Cookie</h2>
         <h2>年齡：3</h2>
         <h2>生日：12月1號</h2>
@@ -30,7 +30,7 @@
     
   
 
-    <div class="intro bottom-bgcolor" style="margin-top: 50px">
+    <div class="word word1 bottom-bgcolor" style="margin-top: 50px">
       <p>
         汪汪...大家好我叫曾cookie，是一隻柴柴，三年前來到這個家後每天就過著皇帝般的生活。
         <br />因為飼料乾巴巴的，好難吃，所以每天都有鮮食，雖然我還是那麼瘦。
@@ -41,7 +41,7 @@
       </p>
     </div>
     <div class="special" style="margin-top: 50px">
-      <div class="special-text">
+      <div class="word word1">
         <h2>特長：</h2>
         <h3>🌟咬人</h3>
         <p>
@@ -63,12 +63,12 @@
         <img :src="imgTest" alt="我正在發掘新才能..." />
       </div> -->
     </div>
-    <div class="subject" style="font-family: Festive">
+    <div class="word word1 subject" style="font-family: Festive">
       <h3>
         這個網站是我的小主人們為了紀錄我的生活所建立的，每天的生活紀錄都會在這上面，
         <br />有興趣知道我的日常生活的人都可以隨時關注這個網站，也可以追蹤下面的ig喔
       </h3>
-      <img style="margin-bottom: 50px" src="@/components/home/content/Pictures/ig-icon.png" />
+      <img style="margin-bottom: 50px; user-select: none; -webkit-user-drag: none; " src="@/components/home/content/Pictures/ig-icon.png" />
     </div>
     <!-- {{S1}}/{{ToTalAge}} -->
   </div>
@@ -80,9 +80,9 @@ import firebase from '@/tools/firebase.js'
 import timeHelper from '@/tools/timeHelper.js'
 
 
-const imgTest = computed(
-  () => new URL("Pictures/bottom-1.jpeg", import.meta.url).href
-);
+// const imgTest = computed(
+//   () => new URL("Pictures/bottom-1.jpeg", import.meta.url).href
+// );
 
 
 const S1 = ref(18)
@@ -110,7 +110,9 @@ const ToTalAge = computed(
 
 
 function getImgPath(num){
-  return new URL(`Pictures/bottom-pic-${num}.jpeg`, import.meta.url).href
+  //  return `./src/components/home/content/Pictures/bottom-pic-${num}.jpeg`;
+   return `./bottom-pic-${num}.jpeg`;
+  //  new URL(`Pictures/bottom-pic-${num}.jpeg`, import.meta.url).href
 }
 
 onMounted(()=>{
@@ -129,21 +131,72 @@ onMounted(()=>{
 #tab-home-root {
   text-align: center;
   font-weight: bold;
+  height: 100%;
+    overflow: auto;
   .top {
     margin-top: 100px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     text-align: center;
+    @media screen and (max-width: 2000px) {
     img {
-      max-height: 450px;
-      max-width: 370px;
+      max-height: 300px;
+      max-width: 100%;
       border: 2px dashed;
       box-shadow: 5px 5px 3px gray;
       border-radius: 10px;
     }
     h1 {
       font-size: 170px;
+    }
+    }
+    @media screen and (max-width: 700px) {
+    img {
+      max-height: 300px;
+      max-width: 100%;
+      border: 2px dashed;
+      box-shadow: 5px 5px 3px gray;
+      border-radius: 10px;
+    }
+    h1 {
+      font-size: 100px;
+    }
+    .word{
+      font-size: 10px;
+    }
+    .bottom-bgcolor {
+    background-color: burlywood;
+    // background-color: #EAD6BD;
+    margin: 50px 50px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin-top: 200px;
+
+  }
+    }
+    @media screen and (max-width: 450px) {
+    img {
+      max-height: 150px;
+      max-width: 100%;
+      border: 2px dashed;
+      box-shadow: 5px 5px 3px gray;
+      border-radius: 10px;
+    }
+    h1 {
+      font-size: 50px;
+    }
+    .word1{
+      font-size: 1px;
+    };
+    .bottom-bgcolor {
+    background-color: burlywood;
+    // background-color: #EAD6BD;
+    margin: 10px 10px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin-top: 200px;
+  }
     }
   }
   .bottom {
@@ -184,10 +237,11 @@ onMounted(()=>{
   .bottom-bgcolor {
     background-color: burlywood;
     // background-color: #EAD6BD;
-    margin: 200px 200px;
+    margin: 100px 100px;
     padding-top: 50px;
     padding-bottom: 50px;
     margin-top: 200px;
+
   }
   .special {
     display: flex;
@@ -205,5 +259,33 @@ onMounted(()=>{
       width: 50px;
     }
   }
+  // @media screen and (max-width: 700px) {
+  //   .word{
+  //     font-size: 10px;
+  //   }
+  //     .bottom-bgcolor {
+  //   background-color: burlywood;
+  //   // background-color: #EAD6BD;
+  //   margin: 50px 50px;
+  //   padding-top: 50px;
+  //   padding-bottom: 50px;
+  //   margin-top: 200px;
+
+  // }
+  // }
+  // @media screen and (max-width: 450px) {
+  //   .word1{
+  //     font-size: 1px;
+  //   };
+  //     .bottom-bgcolor {
+  //   background-color: burlywood;
+  //   // background-color: #EAD6BD;
+  //   margin: 10px 10px;
+  //   padding-top: 50px;
+  //   padding-bottom: 50px;
+  //   margin-top: 200px;
+
+  // }
+  // }
 }
 </style>

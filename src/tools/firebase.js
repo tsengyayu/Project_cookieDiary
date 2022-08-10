@@ -34,7 +34,7 @@ async function testUpload(imageName, file) {
   });
 }
 
-async function testDownload(diaryID){
+async function getDiaryContentImageUrl(diaryID){
   // https,http,ftp,file;
   // http,https(secure);
 
@@ -185,6 +185,6 @@ export default {
   createComment,
   showMessages,
   testUpload,
-  testDownload
+  getDiaryContentImageUrl: getDiaryContentImageUrl
 
 }

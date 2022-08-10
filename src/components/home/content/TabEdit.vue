@@ -16,6 +16,7 @@
 </template>
 
 <style scoped lung="scss">
+@media screen and (max-width: 2000px) {
 #Tab-edit {
   text-align: center;
   margin-top: 50px;
@@ -27,6 +28,23 @@
 .input{
   width: 400px;
   height: 200px;
+}
+}
+
+@media screen and (max-width: 450px) {
+#Tab-edit {
+  text-align: center;
+  margin-top: 50px;
+}
+.title{
+  margin-top: 20px;
+  width: 200px;
+  height: 20px;
+}
+.input{
+  width: 200px;
+  height: 100px;
+}
 }
 </style>
 
@@ -54,6 +72,9 @@ function sendImage(files) {
 }
 
 async function push() {
+
+  // todo test
+   document.getElementById("photoFile").value = ''; 
   
   if (
     diaryContent.value.length < 1 ||

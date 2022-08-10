@@ -15,23 +15,33 @@
 .tab-root {
   // display: flex;
   // justify-content: start;
-  // height: 69px;
-  // width: 100%;
+  height: 69px;
   background-color: burlywood;
-  // background-color: #F2AB39;
-
   // position: fixed;
   // top: 0px;
-  .btn {
+    @media screen and (max-width: 2000px) {
+.btn {
     display: inline-block;
     margin: 0 20px;
-    // color: white;
     line-height: 69px;
     cursor: pointer;
     &:hover {
       color: white;
     }
   }
+    }
+        @media screen and (max-width: 450px) {
+.btn {
+    display: inline-block;
+    margin: 0 10px;
+    font-size: 5px;
+    line-height: 69px;
+    cursor: pointer;
+    &:hover {
+      color: white;
+    }
+  }
+    }
 }
 </style>
 
@@ -40,11 +50,16 @@ import { ref, onMounted , inject, computed, watch} from "vue";
 const emit = defineEmits(["onTabSelected"]);
 
 
-const selectedTabIndex = ref(0);
 
+const selectedTabIndex = ref(0);
+const setContentEditShow = inject('setContentEditShow');
 const isContentEditShow = inject('isContentEditShow')
 // watch(isContentEditShow, (newValue)=>{
 // console.log('isContentEditShow watch ' + isContentEditShow.value)
+// })
+// onMounted(()=>{
+//   var doc = await firebase.getUser(userName.value);
+//   setContentEditShow(doc.id == 'cookie');
 // })
 
 const tabNames = computed(()=>{

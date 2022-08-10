@@ -1,13 +1,17 @@
 
 
 var user = null;
-var lastUser =  localStorage.getItem('user');
-if(lastUser){
+var lastUser = localStorage.getItem('user');
+if (lastUser) {
     user = JSON.parse(lastUser)
 }
 
-function updateUser(username){
-    user = {username};
+function updateUser(username) {
+    user = {
+        username
+    };
+
+
     localStorage.setItem('user', JSON.stringify(user));
     console.log(user);
 
@@ -19,12 +23,12 @@ function updateUser(username){
 
 }
 
-function logout(){
+function logout() {
     user = null
     localStorage.setItem('user', null);
 }
 
-function getUser(){
+function getUser() {
     return user;
 }
 
