@@ -178,7 +178,7 @@ img {
 .fontStyle {
   font-family: Noto + Serif + TC;
   font-weight: bolder;
-  font-size: 1px;
+  font-size: 5px;
 }
 img {
   margin-top: 20px;

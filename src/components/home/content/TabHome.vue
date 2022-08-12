@@ -302,7 +302,7 @@ onMounted(()=>{
   }
   @media screen and (max-width: 450px) {
     .word{
-      font-size: 1px;
+      font-size: 10px;
     };
     .word1{
       font-size: 10px;
