@@ -4,8 +4,8 @@
       <img src="@/components/home/content/Pictures/pic-1.jpeg" alt="不好意思，本柴害羞，暫時不見人" />
       <h1 style="font-family: Festive">Cookie</h1>
     </div>
-    <div class="bottom">
-      <div class="word bottom-bgcolor">
+    <div class="bottom word1">
+      <div class="bottom-bgcolor">
         <h2>姓名：Cookie</h2>
         <h2>年齡：3</h2>
         <h2>生日：12月1號</h2>
@@ -30,7 +30,7 @@
     
   
 
-    <div class="word word1 bottom-bgcolor" style="margin-top: 50px">
+    <div class="word bottom-bgcolor" style="margin-top: 50px">
       <p>
         汪汪...大家好我叫曾cookie，是一隻柴柴，三年前來到這個家後每天就過著皇帝般的生活。
         <br />因為飼料乾巴巴的，好難吃，所以每天都有鮮食，雖然我還是那麼瘦。
@@ -63,7 +63,7 @@
         <img :src="imgTest" alt="我正在發掘新才能..." />
       </div> -->
     </div>
-    <div class="word word1 subject" style="font-family: Festive">
+    <div class="word subject" style="font-family: Festive">
       <h3>
         這個網站是我的小主人們為了紀錄我的生活所建立的，每天的生活紀錄都會在這上面，
         <br />有興趣知道我的日常生活的人都可以隨時關注這個網站，也可以追蹤下面的ig喔
@@ -132,7 +132,7 @@ onMounted(()=>{
   text-align: center;
   font-weight: bold;
   height: 100%;
-    overflow: auto;
+  overflow: auto;
   .top {
     margin-top: 100px;
     display: flex;
@@ -162,13 +162,13 @@ onMounted(()=>{
     h1 {
       font-size: 100px;
     }
-    .word{
+    h2{
       font-size: 10px;
     }
     .bottom-bgcolor {
     background-color: burlywood;
     // background-color: #EAD6BD;
-    margin: 50px 50px;
+    margin: 10px 10px;
     padding-top: 50px;
     padding-bottom: 50px;
     margin-top: 200px;
@@ -186,7 +186,7 @@ onMounted(()=>{
     h1 {
       font-size: 50px;
     }
-    .word1{
+    h2{
       font-size: 1px;
     };
     .bottom-bgcolor {
@@ -234,15 +234,15 @@ onMounted(()=>{
       }
     }
   }
-  .bottom-bgcolor {
-    background-color: burlywood;
-    // background-color: #EAD6BD;
-    margin: 100px 100px;
-    padding-top: 50px;
-    padding-bottom: 50px;
-    margin-top: 200px;
+  // .bottom-bgcolor {
+  //   background-color: burlywood;
+  //   // background-color: #EAD6BD;
+  //   margin: 100px 100px;
+  //   padding-top: 50px;
+  //   padding-bottom: 50px;
+  //   margin-top: 200px;
 
-  }
+  // }
   .special {
     display: flex;
     flex-wrap: nowrap;
@@ -259,33 +259,87 @@ onMounted(()=>{
       width: 50px;
     }
   }
-  // @media screen and (max-width: 700px) {
-  //   .word{
-  //     font-size: 10px;
-  //   }
-  //     .bottom-bgcolor {
-  //   background-color: burlywood;
-  //   // background-color: #EAD6BD;
-  //   margin: 50px 50px;
-  //   padding-top: 50px;
-  //   padding-bottom: 50px;
-  //   margin-top: 200px;
+  @media screen and (max-width: 700px) {
+    .word{
+      font-size: 10px;
+    }
+    .word1{
+      font-size: 10px;
+    }
+      .bottom-bgcolor {
+    background-color: burlywood;
+    // background-color: #EAD6BD;
+    margin: 50px 50px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin-top: 200px;
 
-  // }
-  // }
-  // @media screen and (max-width: 450px) {
-  //   .word1{
-  //     font-size: 1px;
-  //   };
-  //     .bottom-bgcolor {
-  //   background-color: burlywood;
-  //   // background-color: #EAD6BD;
-  //   margin: 10px 10px;
-  //   padding-top: 50px;
-  //   padding-bottom: 50px;
-  //   margin-top: 200px;
+  }
+  .picture {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    /* background-color: yellow; */
+    margin-top: 50px;
+    margin-bottom: 50px;
+    img {
+      // position: absolute;
+      // top: 10px;
+      // left: 10px;
+      border-radius: 99em;
+      width: 150px;
+      height: 150px;
+      .circle-test {
+        // position: relative;
+        border-radius: 99em;
+        width: 220px;
+        height: 220px;
+        background-color: orange;
+      }
+    }
+  }
+  }
+  @media screen and (max-width: 450px) {
+    .word{
+      font-size: 1px;
+    };
+    .word1{
+      font-size: 10px;
+    }
+      .bottom-bgcolor {
+    background-color: burlywood;
+    // background-color: #EAD6BD;
+    margin: 15px 15px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin-top: 100px;
 
-  // }
-  // }
+  }
+  .picture {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    /* background-color: yellow; */
+    margin-top: 50px;
+    margin-bottom: 50px;
+    img {
+      // position: absolute;
+      // top: 10px;
+      // left: 10px;
+      border-radius: 99em;
+      width: 100px;
+      height: 100px;
+      .circle-test {
+        // position: relative;
+        border-radius: 99em;
+        width: 220px;
+        height: 220px;
+        background-color: orange;
+      }
+    }
+  }
+  }
 }
 </style>
